@@ -1,3 +1,5 @@
+package org.efford.baccarat
+
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.assertions.withClue
 import io.kotest.core.spec.IsolationMode

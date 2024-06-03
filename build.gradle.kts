@@ -23,16 +23,18 @@ tasks.withType<Test>().configureEach {
     }
 }
 
+val baccaratMain = "org.efford.baccarat.MainKt"
+
 tasks.named<JavaExec>("run") {
     description = "Runs application without command line arguments"
-    mainClass = "MainKt"
+    mainClass = baccaratMain
 }
 
 tasks.register<JavaExec>("interact") {
     group = "application"
     description = "Runs application with -i command line argument"
     classpath = sourceSets["main"].runtimeClasspath
-    mainClass = "MainKt"
+    mainClass = baccaratMain
     standardInput = System.`in`
     args = listOf("-i")
     doFirst {

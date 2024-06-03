@@ -1,3 +1,5 @@
+package org.efford.baccarat
+
 import kotlin.math.min
 
 /**

@@ -1,3 +1,5 @@
+package org.efford.baccarat
+
 /**
  * A collection of cards.
  */

@@ -1,3 +1,5 @@
+package org.efford.baccarat
+
 /**
  * A hand of cards in the game of Baccarat.
  */

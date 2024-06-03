@@ -1,3 +1,5 @@
+package org.efford.baccarat
+
 import io.kotest.assertions.withClue
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.comparables.shouldBeEqualComparingTo
@@ -16,7 +18,7 @@ class BaccaratCardTest: StringSpec({
     val tenHearts = BaccaratCard(Card.Rank.TEN, Card.Suit.HEARTS)
     val kingSpades = BaccaratCard(Card.Rank.KING, Card.Suit.SPADES)
 
-    "BaccaratCard derives from Card" {
+    "org.efford.kotlin.BaccaratCard derives from Card" {
         aceClubs.shouldBeInstanceOf<Card>()
     }
 

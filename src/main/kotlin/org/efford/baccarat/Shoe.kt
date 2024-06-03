@@ -1,3 +1,5 @@
+package org.efford.baccarat
+
 /**
  * A shoe of cards for the game of Baccarat.
  */

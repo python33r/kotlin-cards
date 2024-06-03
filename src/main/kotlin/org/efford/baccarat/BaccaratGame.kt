@@ -1,3 +1,5 @@
+package org.efford.baccarat
+
 /**
  * Simulator for a simplified version of Baccarat.
  */

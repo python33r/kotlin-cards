@@ -2,9 +2,6 @@ package org.efford.baccarat
 
 /**
  * A playing card used in Baccarat.
- *
- * @property[rank] Rank of this card
- * @property[suit] Suit of this card
  */
 class BaccaratCard(rank: Rank, suit: Suit): Card(rank, suit) {
     /**

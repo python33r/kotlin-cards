@@ -3,7 +3,10 @@ package org.efford.baccarat
 /**
  * A shoe of cards for the game of Baccarat.
  *
- * @property[numDecks] Number of decks to use (6 or 8)
+ * Shoes can be created using either six or eight full decks of cards.
+ * If you don't specify the number of decks, six is assumed.
+ *
+ * @property[numDecks] Number of decks to use
  */
 class Shoe(val numDecks: Int = 6): CardCollection() {
     init {
@@ -23,12 +26,14 @@ class Shoe(val numDecks: Int = 6): CardCollection() {
      * @return Card at the top of the shoe
      */
     fun deal(): Card {
-        // TODO: check for empty list and throw custom exception here?
         return cards.removeFirst()
     }
 
     /**
      * Rearranges cards in this shoe randomly.
+     *
+     * Shoe contents are ordered on creation, so this method needs to
+     * be called before using the shoe in a game.
      */
     fun shuffle() = cards.shuffle()
 }

@@ -19,10 +19,10 @@ class BaccaratGame(shoeDecks: Int) {
      * In interactive mode, the user is asked after each round whether
      * they wish the game to continue or not.
      *
-     * In non-interactive mode, the default, the game will run to completion
+     * In non-interactive mode (the default), the game will run to completion
      * without any user interaction.
      *
-     * @param interact True if interactive mode is required, false otherwise
+     * @param[interact] `true` if interactive mode is required, `false` otherwise
      */
     fun play(interact: Boolean = false) {
         while (shoe.size >= 6) {

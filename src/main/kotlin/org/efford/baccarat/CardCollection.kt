@@ -7,25 +7,27 @@ abstract class CardCollection {
     protected var cards = mutableListOf<Card>()
 
     /**
-     * Number of cards in this collection.
+     * Number of cards in this collection
      */
     val size get() = cards.size
 
     /**
-     * Indicator of whether this collection is empty or not.
+     * Indicator of whether this collection is empty or not
      */
     val isEmpty get() = cards.isEmpty()
 
     /**
-     * Value of this collection.
+     * Value of this collection
+     *
+     * By default, this is simply the sum of the card values.
      */
     open val value get() = cards.sumOf { it.value }
 
     /**
      * Indicates whether this collection contains a card.
      *
-     * @param card Card being tested
-     * @return true if specified card is in the collection, false otherwise
+     * @param[card] Card being tested
+     * @return `true` if specified card is in the collection, `false` otherwise
      */
     infix fun contains(card: Card) = cards.contains(card)
 

@@ -2,6 +2,8 @@ package org.efford.baccarat
 
 /**
  * A shoe of cards for the game of Baccarat.
+ *
+ * @property[numDecks] Number of decks to use (6 or 8)
  */
 class Shoe(val numDecks: Int = 6): CardCollection() {
     init {
@@ -17,6 +19,8 @@ class Shoe(val numDecks: Int = 6): CardCollection() {
 
     /**
      * Removes and returns top card of this shoe.
+     *
+     * @return Card at the top of the shoe
      */
     fun deal(): Card {
         // TODO: check for empty list and throw custom exception here?

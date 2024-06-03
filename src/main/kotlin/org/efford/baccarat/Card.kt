@@ -5,12 +5,14 @@ import kotlin.math.min
 /**
  * A playing card.
  *
- * @property[rank] Rank of the card
- * @property[suit] Suit of the card
+ * @property[rank] Rank of this card
+ * @property[suit] Suit of this card
  */
 open class Card(val rank: Rank, val suit: Suit): Comparable<Card> {
     /**
      * Rank of a playing card.
+     *
+     * @property[symbol] Character used to represent this rank
      */
     enum class Rank(val symbol: Char) {
         ACE('A'), TWO('2'), THREE('3'), FOUR('4'), FIVE('5'),
@@ -22,6 +24,8 @@ open class Card(val rank: Rank, val suit: Suit): Comparable<Card> {
 
     /**
      * Suit of a playing card.
+     *
+     * @property[symbol] Character used to represent this suit
      */
     enum class Suit(val symbol: Char) {
         CLUBS('\u2663'), DIAMONDS('\u2666'),
@@ -31,12 +35,15 @@ open class Card(val rank: Rank, val suit: Suit): Comparable<Card> {
     }
 
     /**
-     * Full name of this card (e.g., "Ace of Clubs").
+     * Full name of this card (e.g., "Ace of Clubs")
+     *
+     * The name is a concatenation of the rank and suit names in titlecase,
+     * separated by `" of "`.
      */
     val fullName = "$rank of $suit"
 
     /**
-     * Value of this card.
+     * Value of this card
      *
      * Value is the number of 'pips' on the card. Picture cards
      * (Jack, Queen, King) have a value of 10.
@@ -53,7 +60,7 @@ open class Card(val rank: Rank, val suit: Suit): Comparable<Card> {
     /**
      * Generates a plain two-character string representation of this card.
      *
-     * Characters 'C', 'D', 'H', 'S' are substituted for the fancier
+     * Characters `'C'`, `'D'`, `'H'`, `'S'` are substituted for the fancier
      * Unicode suit symbols.
      *
      * @return Card as a plain string
@@ -64,7 +71,7 @@ open class Card(val rank: Rank, val suit: Suit): Comparable<Card> {
      * Tests whether this card is equal to another object.
      *
      * @param[other] Object with which this card is being compared
-     * @return true if object is a card with same rank & suit, false otherwise
+     * @return `true` if object is a card with same rank & suit, `false` otherwise
      */
     override fun equals(other: Any?) = when(other) {
         is Card -> rank == other.rank && suit == other.suit

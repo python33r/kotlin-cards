@@ -1,0 +1,4 @@
+* text=auto
+*.kt text
+*.bat text eol=crlf
+*.jar binary

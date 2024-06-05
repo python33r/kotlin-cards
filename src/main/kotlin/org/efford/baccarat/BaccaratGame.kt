@@ -3,8 +3,12 @@ package org.efford.baccarat
 /**
  * Simulator for a simplified version of Baccarat.
  */
-class BaccaratGame(shoeDecks: Int) {
-    private val shoe = Shoe(shoeDecks).apply { shuffle() }
+class BaccaratGame(numDecks: Int = 6) {
+    companion object {
+        const val MIN_SHOE_SIZE = 6
+    }
+
+    private val shoe = Shoe(numDecks).apply { shuffle() }
     private val player = BaccaratHand()
     private val banker = BaccaratHand()
 
@@ -22,10 +26,13 @@ class BaccaratGame(shoeDecks: Int) {
      * In non-interactive mode (the default), the game will run to completion
      * without any user interaction.
      *
+     * In either mode, the game will stop once there are no longer enough
+     * cards in the shoe to guarantee a complete round of play.
+     *
      * @param[interact] `true` if interactive mode is required, `false` otherwise
      */
     fun play(interact: Boolean = false) {
-        while (shoe.size >= 6) {
+        while (shoe.size >= MIN_SHOE_SIZE) {
             playRound()
             if (interact && playerWantsToQuit()) {
                 break

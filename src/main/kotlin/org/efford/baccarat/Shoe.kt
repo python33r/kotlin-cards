@@ -6,11 +6,11 @@ package org.efford.baccarat
  * Shoes can be created using either six or eight full decks of cards.
  * If you don't specify the number of decks, six is assumed.
  *
- * @property[numDecks] Number of decks to use
+ * @param[numDecks] Number of decks to use
  */
-class Shoe(val numDecks: Int = 6): CardCollection() {
+class Shoe(numDecks: Int = 6): CardCollection() {
     init {
-        require(numDecks == 6 || numDecks == 8) { "invalid number of decks" }
+        require(numDecks == 6 || numDecks == 8) { "Invalid number of decks" }
         repeat(numDecks) {
             for (suit in Card.Suit.entries) {
                 for (rank in Card.Rank.entries) {
@@ -25,9 +25,7 @@ class Shoe(val numDecks: Int = 6): CardCollection() {
      *
      * @return Card at the top of the shoe
      */
-    fun deal(): Card {
-        return cards.removeFirst()
-    }
+    fun deal(): Card = cards.removeFirst()
 
     /**
      * Rearranges cards in this shoe randomly.

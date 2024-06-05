@@ -26,13 +26,11 @@ class ShoeTest: StringSpec({
     }
 
     "Default six-deck shoe can be created" {
-        withClue("Number of decks") { shoe.numDecks shouldBe 6 }
         withClue("Number of cards in shoe") { shoe.size shouldBe 6 * cardsInADeck }
     }
 
     "Larger eight-deck shoe can be created" {
         val bigShoe = Shoe(8)
-        withClue("Number of decks") { bigShoe.numDecks shouldBe 8 }
         withClue("Number of cards in shoe") { bigShoe.size shouldBe 8 * cardsInADeck }
     }
 
@@ -40,7 +38,8 @@ class ShoeTest: StringSpec({
         val badSizes = (1..5).toList() + 7 + 9
         for (size in badSizes) {
             withClue("Size=$size") {
-                shouldThrow<IllegalArgumentException> { Shoe(size) }
+                val error = shouldThrow<IllegalArgumentException> { Shoe(size) }
+                error.message shouldBe "Invalid number of decks"
             }
         }
     }

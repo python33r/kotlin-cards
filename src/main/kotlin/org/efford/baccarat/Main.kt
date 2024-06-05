@@ -8,7 +8,7 @@ package org.efford.baccarat
  * non-interactive mode.
  */
 fun main(args: Array<String>) {
-    val game = BaccaratGame(6)
+    val game = BaccaratGame()
     val isInteractive = args.contains("-i") || args.contains("--interactive")
     game.play(isInteractive)
 }

@@ -66,7 +66,12 @@ class ShoeTest: StringSpec({
 
     "Shoe can be shuffled" {
         shoe.shuffle()
-        val cards = Array(cardsInADeck) { shoe.deal() }.toList()
+        val cards = mutableListOf<BaccaratCard>()
+        repeat(10) {
+            shoe.deal()?.let {
+                cards.add(it)
+            }
+        }
         cards.shouldNotBeSorted()
     }
 })

@@ -59,8 +59,8 @@ class BaccaratGame(numDecks: Int = 6) {
 
     private fun dealInitialCards() {
         repeat(2) {
-            player.add(shoe.deal())
-            banker.add(shoe.deal())
+            shoe.deal()?.let { player.add(it) }
+            shoe.deal()?.let { banker.add(it) }
         }
         showHands()
     }
@@ -82,16 +82,17 @@ class BaccaratGame(numDecks: Int = 6) {
         var dealToBanker = false
 
         if (dealToPlayer) {
-            println("Dealing third card to player...")
-            val thirdCard = shoe.deal()
-            player.add(thirdCard)
-            dealToBanker = when {
-                banker.value <= 2 -> true
-                banker.value == 3 && thirdCard.value != 8 -> true
-                banker.value == 4 && thirdCard.value in 2..7 -> true
-                banker.value == 5 && thirdCard.value in 4..7 -> true
-                banker.value == 6 && thirdCard.value in 6..7 -> true
-                else -> false
+            shoe.deal()?.let {
+                println("Dealing third card to player...")
+                player.add(it)
+                dealToBanker = when {
+                    banker.value <= 2 -> true
+                    banker.value == 3 && it.value != 8 -> true
+                    banker.value == 4 && it.value in 2..7 -> true
+                    banker.value == 5 && it.value in 4..7 -> true
+                    banker.value == 6 && it.value in 6..7 -> true
+                    else -> false
+                }
             }
         }
         else if (banker.value < 6) {
@@ -99,8 +100,10 @@ class BaccaratGame(numDecks: Int = 6) {
         }
 
         if (dealToBanker) {
-            println("Dealing third card to banker...")
-            banker.add(shoe.deal())
+            shoe.deal()?.let {
+                println("Dealing third card to banker...")
+                banker.add(it)
+            }
         }
 
         if (dealToPlayer || dealToBanker) {

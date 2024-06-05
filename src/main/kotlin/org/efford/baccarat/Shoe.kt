@@ -23,9 +23,9 @@ class Shoe(numDecks: Int = 6): CardCollection<BaccaratCard>() {
     /**
      * Removes and returns top card of this shoe.
      *
-     * @return Card at the top of the shoe
+     * @return Card at the top of the shoe, or `null` if shoe is empty
      */
-    fun deal(): BaccaratCard = cards.removeFirst()
+    fun deal(): BaccaratCard? = cards.removeFirstOrNull()
 
     /**
      * Rearranges cards in this shoe randomly.

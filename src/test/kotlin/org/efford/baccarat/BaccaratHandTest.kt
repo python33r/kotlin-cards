@@ -4,6 +4,7 @@ import io.kotest.assertions.withClue
 import io.kotest.core.spec.IsolationMode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeInstanceOf
 
 class BaccaratHandTest: StringSpec({
     isolationMode = IsolationMode.InstancePerTest
@@ -15,6 +16,10 @@ class BaccaratHandTest: StringSpec({
     handOneCard.add(BaccaratCard(Card.Rank.NINE, Card.Suit.DIAMONDS))
     handTwoCards.add(BaccaratCard(Card.Rank.NINE, Card.Suit.DIAMONDS))
     handTwoCards.add(BaccaratCard(Card.Rank.TWO, Card.Suit.CLUBS))
+
+    "BaccaratHand derives from CardCollection<BaccaratCard>" {
+        hand.shouldBeInstanceOf<CardCollection<BaccaratCard>>()
+    }
 
     "A hand starts off empty" {
         withClue("Hand size") { hand.size shouldBe 0 }

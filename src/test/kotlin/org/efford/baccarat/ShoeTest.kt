@@ -21,8 +21,8 @@ class ShoeTest: StringSpec({
 
     val shoe = Shoe()
 
-    "Shoe derives from CardCollection" {
-        shoe.shouldBeInstanceOf<CardCollection>()
+    "Shoe derives from CardCollection<BaccaratCard>" {
+        shoe.shouldBeInstanceOf<CardCollection<BaccaratCard>>()
     }
 
     "Default six-deck shoe can be created" {

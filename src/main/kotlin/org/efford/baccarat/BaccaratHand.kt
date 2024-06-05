@@ -3,7 +3,7 @@ package org.efford.baccarat
 /**
  * A hand of cards in the game of Baccarat.
  */
-class BaccaratHand: CardCollection() {
+class BaccaratHand: CardCollection<BaccaratCard>() {
     /**
      * Value of this hand
      *

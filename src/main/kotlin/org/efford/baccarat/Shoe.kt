@@ -8,7 +8,7 @@ package org.efford.baccarat
  *
  * @param[numDecks] Number of decks to use
  */
-class Shoe(numDecks: Int = 6): CardCollection() {
+class Shoe(numDecks: Int = 6): CardCollection<BaccaratCard>() {
     init {
         require(numDecks == 6 || numDecks == 8) { "Invalid number of decks" }
         repeat(numDecks) {
@@ -25,7 +25,7 @@ class Shoe(numDecks: Int = 6): CardCollection() {
      *
      * @return Card at the top of the shoe
      */
-    fun deal(): Card = cards.removeFirst()
+    fun deal(): BaccaratCard = cards.removeFirst()
 
     /**
      * Rearranges cards in this shoe randomly.

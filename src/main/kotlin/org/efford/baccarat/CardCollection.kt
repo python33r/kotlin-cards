@@ -3,8 +3,8 @@ package org.efford.baccarat
 /**
  * A collection of cards.
  */
-abstract class CardCollection {
-    protected var cards = mutableListOf<Card>()
+abstract class CardCollection<T: Card> {
+    protected var cards = mutableListOf<T>()
 
     /**
      * Number of cards in this collection
@@ -29,14 +29,14 @@ abstract class CardCollection {
      * @param[card] Card being tested
      * @return `true` if specified card is in the collection, `false` otherwise
      */
-    infix fun contains(card: Card) = cards.contains(card)
+    infix fun contains(card: T) = cards.contains(card)
 
     /**
      * Adds the specified card to this collection.
      *
      * @param[card] Card to be added
      */
-    open fun add(card: Card) = cards.add(card)
+    open fun add(card: T) = cards.add(card)
 
     /**
      * Empties this collection of cards.

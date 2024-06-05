@@ -18,7 +18,7 @@ class BaccaratCardTest: StringSpec({
     val tenHearts = BaccaratCard(Card.Rank.TEN, Card.Suit.HEARTS)
     val kingSpades = BaccaratCard(Card.Rank.KING, Card.Suit.SPADES)
 
-    "org.efford.kotlin.BaccaratCard derives from Card" {
+    "BaccaratCard derives from Card" {
         aceClubs.shouldBeInstanceOf<Card>()
     }
 

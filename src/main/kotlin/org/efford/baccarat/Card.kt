@@ -3,6 +3,13 @@ package org.efford.baccarat
 import kotlin.math.min
 
 /**
+ * Extension function to render a one-word string in titlecase.
+ *
+ * Used to produce string representations of `Rank` & `Suit` enum constants.
+ */
+fun String.titlecase(): String = lowercase().replaceFirstChar(Char::titlecase)
+
+/**
  * A playing card.
  *
  * @property[rank] Rank of this card
@@ -19,7 +26,7 @@ open class Card(val rank: Rank, val suit: Suit): Comparable<Card> {
         SIX('6'), SEVEN('7'), EIGHT('8'), NINE('9'), TEN('T'),
         JACK('J'), QUEEN('Q'), KING('K');
 
-        override fun toString() = name.lowercase().replaceFirstChar(Char::titlecase)
+        override fun toString() = name.titlecase()
     }
 
     /**
@@ -31,7 +38,7 @@ open class Card(val rank: Rank, val suit: Suit): Comparable<Card> {
         CLUBS('\u2663'), DIAMONDS('\u2666'),
         HEARTS('\u2665'), SPADES('\u2660');
 
-        override fun toString() = name.lowercase().replaceFirstChar(Char::titlecase)
+        override fun toString() = name.titlecase()
     }
 
     /**

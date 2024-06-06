@@ -142,8 +142,8 @@ class BaccaratGame(numDecks: Int = 6) {
     }
 
     private fun playerWantsToQuit(): Boolean {
-        print("Another round? (y/n): ")
+        print("\n[Q]uit or [P]lay another round?: ")
         val response = readlnOrNull()?.lowercase() ?: ""
-        return !response.startsWith("y")
+        return response.startsWith("q")
     }
 }

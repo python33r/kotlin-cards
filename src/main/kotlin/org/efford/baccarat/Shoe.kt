@@ -12,10 +12,8 @@ class Shoe(numDecks: Int = 6): CardCollection<BaccaratCard>() {
     init {
         require(numDecks == 6 || numDecks == 8) { "Invalid number of decks" }
         repeat(numDecks) {
-            for (suit in Card.Suit.entries) {
-                for (rank in Card.Rank.entries) {
-                    cards.add(BaccaratCard(rank, suit))
-                }
+            for (card in deckOf<BaccaratCard>()) {
+                cards.add(card)
             }
         }
     }

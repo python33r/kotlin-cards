@@ -4,7 +4,7 @@ package org.efford.baccarat
  * A collection of cards.
  */
 abstract class CardCollection<T: Card> {
-    protected var cards = mutableListOf<T>()
+    protected val cards = mutableListOf<T>()
 
     /**
      * Number of cards in this collection
@@ -47,4 +47,17 @@ abstract class CardCollection<T: Card> {
      * Sorts this collection into its natural order.
      */
     fun sort() = cards.sort()
+}
+
+/**
+ * Generates a full deck of 52 cards, in sequence.
+ *
+ * @return Sequence of instances of Card (or a subtype)
+ */
+inline fun <reified T: Card> deckOf(): Sequence<T> = sequence {
+    for (suit in Card.Suit.entries) {
+        for (rank in Card.Rank.entries) {
+            yield(T::class.constructors.first().call(rank, suit))
+        }
+    }
 }

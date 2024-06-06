@@ -9,6 +9,7 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 
+@Suppress("unused")
 class BaccaratCardTest: StringSpec({
     val aceClubs = BaccaratCard(Card.Rank.ACE, Card.Suit.CLUBS)
     val twoClubs = BaccaratCard(Card.Rank.TWO, Card.Suit.CLUBS)

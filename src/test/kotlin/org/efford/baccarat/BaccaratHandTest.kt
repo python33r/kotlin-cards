@@ -6,6 +6,7 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 
+@Suppress("unused")
 class BaccaratHandTest: StringSpec({
     isolationMode = IsolationMode.InstancePerTest
 
@@ -35,7 +36,7 @@ class BaccaratHandTest: StringSpec({
     "Hand values are computed correctly" {
         withClue("Empty") { hand.value shouldBe 0 }
         withClue("9D") { handOneCard.value shouldBe 9 }
-        withClue("9D 2C") { handTwoCards.value shouldBe 1 }
+        withClue("9D,2C") { handTwoCards.value shouldBe 1 }
     }
 
     "Natural hands are detected correctly" {

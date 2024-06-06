@@ -8,6 +8,7 @@ import io.kotest.matchers.collections.shouldNotBeSorted
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 
+@Suppress("unused")
 class ShoeTest: StringSpec({
     isolationMode = IsolationMode.InstancePerTest
 

@@ -39,21 +39,31 @@ class BaccaratHandTest: StringSpec({
         withClue("9D,2C") { handTwoCards.value shouldBe 1 }
     }
 
-    "Natural hands are detected correctly" {
+    "Non-natural hands are recognised correctly" {
         withClue("Empty hand a Natural?") { hand.isNatural shouldBe false }
         withClue("Single-card hand a Natural?") { handOneCard.isNatural shouldBe false }
         withClue("9D,2C a Natural?") { handTwoCards.isNatural shouldBe false }
+    }
 
-        val nat1 = BaccaratHand().apply {
-            add(BaccaratCard(Card.Rank.THREE, Card.Suit.HEARTS))
-            add(BaccaratCard(Card.Rank.FIVE, Card.Suit.CLUBS))
+    "Natural hands are recognised correctly" {
+        withClue("3H,5C a Natural?") {
+            BaccaratHand().apply {
+                add(BaccaratCard(Card.Rank.THREE, Card.Suit.HEARTS))
+                add(BaccaratCard(Card.Rank.FIVE, Card.Suit.CLUBS))
+            }.isNatural shouldBe true
         }
-        val nat2 = BaccaratHand().apply {
-            add(BaccaratCard(Card.Rank.EIGHT, Card.Suit.SPADES))
-            add(BaccaratCard(Card.Rank.JACK, Card.Suit.DIAMONDS))
+        withClue("8S,JD a Natural?") {
+            BaccaratHand().apply {
+                add(BaccaratCard(Card.Rank.EIGHT, Card.Suit.SPADES))
+                add(BaccaratCard(Card.Rank.JACK, Card.Suit.DIAMONDS))
+            }.isNatural shouldBe true
         }
-        withClue("3H,5C a Natural?") { nat1.isNatural shouldBe true }
-        withClue("8S,JD a Natural?") { nat2.isNatural shouldBe true }
+        withClue("8S,AD a Natural?") {
+            BaccaratHand().apply {
+                add(BaccaratCard(Card.Rank.EIGHT, Card.Suit.SPADES))
+                add(BaccaratCard(Card.Rank.ACE, Card.Suit.DIAMONDS))
+            }.isNatural shouldBe true
+        }
     }
 
     "Hands have the correct string representation" {

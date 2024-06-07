@@ -1,5 +1,8 @@
 package org.efford.baccarat
 
+import org.efford.cards.CardCollection
+import org.efford.cards.deckOf
+
 /**
  * A shoe of cards for the game of Baccarat.
  *

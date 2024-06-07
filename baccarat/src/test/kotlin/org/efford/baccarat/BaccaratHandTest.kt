@@ -6,6 +6,9 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 
+import org.efford.cards.Card
+import org.efford.cards.CardCollection
+
 @Suppress("unused")
 class BaccaratHandTest: StringSpec({
     isolationMode = IsolationMode.InstancePerTest

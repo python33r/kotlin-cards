@@ -1,4 +1,4 @@
-package org.efford.baccarat
+package org.efford.cards
 
 /**
  * A collection of cards.

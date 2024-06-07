@@ -1,5 +1,7 @@
 package org.efford.baccarat
 
+import org.efford.cards.Card
+
 /**
  * A playing card used in Baccarat.
  */

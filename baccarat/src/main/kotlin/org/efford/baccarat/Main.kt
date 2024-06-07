@@ -9,6 +9,6 @@ package org.efford.baccarat
  */
 fun main(args: Array<String>) {
     val game = BaccaratGame()
-    val isInteractive = args.contains("-i") || args.contains("--interactive")
-    game.play(isInteractive)
+    val interact = args.contains("-i") || args.contains("--interactive")
+    game.play(interact)
 }

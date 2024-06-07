@@ -3,13 +3,6 @@ package org.efford.baccarat
 import kotlin.math.min
 
 /**
- * Extension function to render a one-word string in titlecase.
- *
- * Used to produce string representations of `Rank` & `Suit` enum constants.
- */
-fun String.titlecase(): String = lowercase().replaceFirstChar(Char::titlecase)
-
-/**
  * A playing card.
  *
  * @property[rank] Rank of this card
@@ -26,7 +19,11 @@ open class Card(val rank: Rank, val suit: Suit): Comparable<Card> {
         SIX('6'), SEVEN('7'), EIGHT('8'), NINE('9'), TEN('T'),
         JACK('J'), QUEEN('Q'), KING('K');
 
-        override fun toString() = name.titlecase()
+        override fun toString() = name.lowercase().replaceFirstChar(Char::titlecase)
+
+        companion object {
+            val fromChar = entries.associateBy { it.symbol }
+        }
     }
 
     /**
@@ -38,7 +35,16 @@ open class Card(val rank: Rank, val suit: Suit): Comparable<Card> {
         CLUBS('\u2663'), DIAMONDS('\u2666'),
         HEARTS('\u2665'), SPADES('\u2660');
 
-        override fun toString() = name.titlecase()
+        override fun toString() = name.lowercase().replaceFirstChar(Char::titlecase)
+
+        companion object {
+            val fromChar = entries.associateBy { it.symbol } + mapOf(
+                'C' to CLUBS,
+                'D' to DIAMONDS,
+                'H' to HEARTS,
+                'S' to SPADES,
+            )
+        }
     }
 
     /**
@@ -103,4 +109,25 @@ open class Card(val rank: Rank, val suit: Suit): Comparable<Card> {
         val diff = suit.compareTo(other.suit)
         return if (diff == 0) rank.compareTo(other.rank) else diff
     }
+}
+
+/**
+ * Parses a card's string (or plain string) representation into
+ * an instance of Card or one of its subtypes.
+ *
+ * @param[name] Two-character card name
+ * @throws[IllegalArgumentException] if card name is invalid
+ */
+inline fun <reified T: Card> stringTo(name: String): T {
+    require(name.length == 2) { "Card names must be two-character strings" }
+
+    val r = Card.Rank.fromChar.getOrElse(name[0]) {
+        throw IllegalArgumentException("Unrecognised rank")
+    }
+
+    val s = Card.Suit.fromChar.getOrElse(name[1]) {
+        throw IllegalArgumentException("Unrecognised suit")
+    }
+
+    return T::class.constructors.first().call(r, s)
 }

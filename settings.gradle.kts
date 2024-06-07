@@ -1,2 +1,2 @@
-rootProject.name = "baccarat"
+rootProject.name = "cards"
 include("lib", "baccarat")

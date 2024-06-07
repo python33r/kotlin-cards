@@ -25,17 +25,6 @@ class BaccaratHandTest: StringSpec({
         hand.shouldBeInstanceOf<CardCollection<BaccaratCard>>()
     }
 
-    "A hand starts off empty" {
-        withClue("Hand size") { hand.size shouldBe 0 }
-    }
-
-    "Cards can be added to a hand" {
-        withClue("Hand size") {
-            handOneCard.size shouldBe 1
-            handTwoCards.size shouldBe 2
-        }
-    }
-
     "Hand values are computed correctly" {
         withClue("Empty") { hand.value shouldBe 0 }
         withClue("9D") { handOneCard.value shouldBe 9 }

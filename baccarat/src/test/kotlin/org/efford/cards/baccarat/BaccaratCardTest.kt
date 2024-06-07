@@ -1,4 +1,4 @@
-package org.efford.baccarat
+package org.efford.cards.baccarat
 
 import io.kotest.assertions.withClue
 import io.kotest.core.spec.style.StringSpec

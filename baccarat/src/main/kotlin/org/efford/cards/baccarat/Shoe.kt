@@ -1,4 +1,4 @@
-package org.efford.baccarat
+package org.efford.cards.baccarat
 
 import org.efford.cards.CardCollection
 import org.efford.cards.deckOf

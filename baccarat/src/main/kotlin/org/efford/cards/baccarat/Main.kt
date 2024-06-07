@@ -1,4 +1,4 @@
-package org.efford.baccarat
+package org.efford.cards.baccarat
 
 /**
  * Entry point for Baccarat simulation.

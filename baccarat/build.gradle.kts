@@ -25,7 +25,7 @@ tasks.withType<Test>().configureEach {
     }
 }
 
-val baccaratMain = "org.efford.baccarat.MainKt"
+val baccaratMain = "org.efford.cards.baccarat.MainKt"
 
 tasks.named<JavaExec>("run") {
     description = "Runs application without command line arguments"

@@ -63,6 +63,11 @@ class ShoeTest: StringSpec({
         withClue("Shoe size") { shoe.size shouldBe initialSize - 2 }
     }
 
+    "Dealing from an empty shoe returns null" {
+        shoe.discard()
+        shoe.deal() shouldBe null
+    }
+
     "Shoe can be shuffled" {
         shoe.shuffle()
         val cards = mutableListOf<BaccaratCard>()

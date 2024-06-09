@@ -13,7 +13,7 @@ class Deck: CardCollection<Card>() {
     }
 
     /**
-     * Deals the card from this deck.
+     * Deals a card from this deck.
      *
      * @return Card at the top of the deck, or null if the deck is empty
      */

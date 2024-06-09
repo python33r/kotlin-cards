@@ -56,4 +56,15 @@ class BlackjackHand(): CardCollection<Card>() {
      * @return Hand as a plainer string
      */
     fun plainString(): String = cards.joinToString(" ") { it.plainString() }
+
+    /**
+     * Transfers the contents of this hand to the given recipient.
+     *
+     * @param[recipient] `CardCollection<Card>` object that will receive the cards
+     */
+    fun discardTo(recipient: CardCollection<Card>) {
+        while (cards.size > 0) {
+            recipient.add(cards.removeFirst())
+        }
+    }
 }

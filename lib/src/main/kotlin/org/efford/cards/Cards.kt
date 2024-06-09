@@ -36,7 +36,9 @@ abstract class CardCollection<T: Card> {
      *
      * @param[card] Card to be added
      */
-    open fun add(card: T) = cards.add(card)
+    open fun add(card: T) {
+        cards.add(card)
+    }
 
     /**
      * Empties this collection of cards.

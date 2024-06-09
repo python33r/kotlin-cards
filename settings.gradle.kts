@@ -1,2 +1,2 @@
 rootProject.name = "cards"
-include("lib", "baccarat", "blackjack")
+include("lib", "baccarat", "blackjack", "poker")

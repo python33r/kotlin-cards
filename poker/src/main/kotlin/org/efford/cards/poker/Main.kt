@@ -1,16 +1,35 @@
 package org.efford.cards.poker
 
-import kotlin.system.exitProcess
-
-fun main(args: Array<String>) {
-    if (args.size != 2) {
-        println("Error: number of trials & path to logfile must be specified")
-        exitProcess(1)
+fun getInt(prompt: String): Int {
+    while (true) {
+        try {
+            print(prompt)
+            return readln().toInt().also { require(it > 0) }
+        }
+        catch (err: Exception) {
+            println("Error: try again...")
+        }
     }
+}
 
-    val numTrials = args[0].toInt()
+fun getString(prompt: String): String {
+    while (true) {
+        try {
+            print(prompt)
+            return readln().also { require(it.isNotBlank()) }
+        }
+        catch (err: Exception) {
+            println("Error: try again...")
+        }
+    }
+}
 
-    val stats = PokerStats(numTrials, args[1])
-    stats.runTrials()
-    stats.showResults()
+fun main() {
+    println()
+    val numTrials = getInt("Number of trials: ")
+    val logPath = getString("Logfile path: ")
+    with(PokerStats(numTrials, logPath)) {
+        runTrials()
+        showResults()
+    }
 }

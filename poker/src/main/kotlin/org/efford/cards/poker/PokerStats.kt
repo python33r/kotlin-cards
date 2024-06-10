@@ -47,7 +47,7 @@ class PokerStats(val numTrials: Int, logPath: String) {
     fun showResults() {
         val hands = numTrials * 10
         with(System.out) {
-            printf("%,d hands dealt\n\n", hands)
+            printf("\n%,d hands dealt\n\n", hands)
             printf("P(Pair)        = %5.2f%%\n", 100.0 * pair / hands)
             printf("P(Two Pairs)   = %5.2f%%\n", 100.0 * twoPairs / hands)
             printf("P(3 of a Kind) = %5.2f%%\n", 100.0 * threeOfAKind / hands)

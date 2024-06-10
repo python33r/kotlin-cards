@@ -27,5 +27,5 @@ tasks.withType<Test>().configureEach {
 
 tasks.named<JavaExec>("run") {
     mainClass = "org.efford.cards.poker.MainKt"
-    args = listOf("10000", "build/log.txt")
+    standardInput = System.`in`
 }

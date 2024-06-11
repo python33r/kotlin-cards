@@ -39,7 +39,7 @@ class BlackjackHandTest: StringSpec({
         emptyHand.shouldBeInstanceOf<CardCollection<Card>>()
     }
 
-    "Hands can be initialised with & without cards" {
+    "Hands can be created with & without cards" {
         withClue("Size") {
             emptyHand.size shouldBe 0
             aceHand.size shouldBe 1

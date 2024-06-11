@@ -15,23 +15,29 @@ class PokerHand(): CardCollection<Card>() {
      * @param[card] One or more instances of Card
      */
     constructor(vararg card: Card): this() {
-        require(card.size <= 5) { "too many cards" }
+        require(card.size <= 5) { "Too many cards" }
         card.forEach { add(it) }
     }
 
     /**
-     * Creates a PokerHand from the given cards.
+     * Creates a PokerHand from a string representation of cards.
      *
-     * Cards are specified using their two-character representations
-     * and must be separated by whitespace.
+     * Cards are specified using their two-character representations,
+     * using either Unicode symbols or `'C'`, `'D'`, `'H'`, `'S'`
+     * to specify suit. These two-character representations must be
+     * separated from each other by either a single space or a comma.
      *
-     * @param[str] String specifying the cards to be added - e.g., "AC JH 7D"
+     * Example: `"AC JH 7D"` or `"QS,TH,AD,7C"`
+     *
+     * @param[str] String specifying the cards to be added
      */
     constructor(str: String): this() {
-        val cardStrings = str.trim().split("\\s+".toRegex())
-        require(cardStrings.size <= 5) { "too many cards" }
-        cardStrings.forEach {
-            add(stringTo<Card>(it))
+        if (str.isNotBlank()) {
+            val cardStrings = str.trim().split(" ", ",")
+            require(cardStrings.size <= 5) { "Too many cards" }
+            cardStrings.forEach {
+                add(stringTo<Card>(it))
+            }
         }
     }
 

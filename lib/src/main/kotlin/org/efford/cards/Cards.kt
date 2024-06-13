@@ -49,6 +49,43 @@ abstract class CardCollection<T: Card> {
      * Sorts this collection into its natural order.
      */
     fun sort() = cards.sort()
+
+    /**
+     * Generates the default string representation of this collection.
+     *
+     * @return Collection as a string
+     */
+    override fun toString() = cards.joinToString(" ")
+
+    /**
+     * Generates a configurable string representation of this collection.
+     *
+     * The string separating each card must be specified. Prefix and
+     * suffix strings can optionally be provided.
+     *
+     * @param[sep] String that separates the cards
+     * @param[start] Optional prefix string
+     * @param[end] Optional suffix string
+     * @return Collection as a string
+     */
+    fun toString(sep: String, start: String = "", end: String = "")
+        = start + cards.joinToString(sep) + end
+
+    /**
+     * Generates a plainer string representation of this collection.
+     *
+     * Characters `'C'`, `'D'`, `'H'`, `'S'` are substituted for the fancier
+     * Unicode suit symbols. If no card separator string is provided,
+     * cards will be separated by a single space. Prefix and suffix strings
+     * can optionally be provided.
+     *
+     * @param[sep] Optional card separator string
+     * @param[start] Optional prefix string
+     * @param[end] Optional suffix string
+     * @return Collection as a plainer string
+     */
+    fun plainString(sep: String = " ", start: String = "", end: String = "")
+        = start + cards.joinToString(sep) { it.plainString() } + end
 }
 
 /**

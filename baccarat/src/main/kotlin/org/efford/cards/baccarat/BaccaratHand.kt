@@ -19,21 +19,4 @@ class BaccaratHand: CardCollection<BaccaratCard>() {
      * Naturals in Baccarat occur when a two-card hand has a value of 8 or 9.
      */
     val isNatural: Boolean get() = size == 2 && (value == 8 || value == 9)
-
-    /**
-     * Generates a string representation of this hand.
-     *
-     * @return Hand as a string
-     */
-    override fun toString() = cards.joinToString(" ")
-
-    /**
-     * Generates a plainer string representation of this hand.
-     *
-     * Characters `'C'`, `'D'`, `'H'`, `'S'` are substituted for the fancier
-     * Unicode suit symbols.
-     *
-     * @return Hand as a plainer string
-     */
-    fun plainString(): String = cards.joinToString(" ") { it.plainString() }
 }

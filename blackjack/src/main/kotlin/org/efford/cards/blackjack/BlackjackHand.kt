@@ -41,23 +41,6 @@ class BlackjackHand(): CardCollection<Card>() {
     val isBust get() = value > 21
 
     /**
-     * Generates a string representation of this hand.
-     *
-     * @return Hand as a string
-     */
-    override fun toString() = cards.joinToString(" ")
-
-    /**
-     * Generates a plainer string representation of this hand.
-     *
-     * Characters `'C'`, `'D'`, `'H'`, `'S'` are substituted for the fancier
-     * Unicode suit symbols.
-     *
-     * @return Hand as a plainer string
-     */
-    fun plainString(): String = cards.joinToString(" ") { it.plainString() }
-
-    /**
      * Transfers the contents of this hand to the given recipient.
      *
      * @param[recipient] `CardCollection<Card>` object that will receive the cards

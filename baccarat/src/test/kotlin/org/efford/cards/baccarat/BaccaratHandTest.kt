@@ -57,16 +57,4 @@ class BaccaratHandTest: StringSpec({
             }.isNatural shouldBe true
         }
     }
-
-    "Hands have the correct string representation" {
-        hand.toString() shouldBe ""
-        handOneCard.toString() shouldBe "9\u2666"
-        handTwoCards.toString() shouldBe "9\u2666 2\u2663"
-    }
-
-    "Hands have the correct plain string representation" {
-        hand.plainString() shouldBe ""
-        handOneCard.plainString() shouldBe "9D"
-        handTwoCards.plainString() shouldBe "9D 2C"
-    }
 })

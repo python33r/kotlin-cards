@@ -116,20 +116,6 @@ class PokerHandTest: StringSpec({
         withClue("Size") { fiveCards.size shouldBe 0 }
     }
 
-    "Hands have the correct string representation" {
-        empty.toString() shouldBe ""
-        oneCard.toString() shouldBe "A\u2663"
-        twoCards.toString() shouldBe "A\u2663 2\u2666"
-        fiveCards.toString() shouldBe "A\u2663 2\u2666 5\u2665 7\u2660 9\u2663"
-    }
-
-    "Hands can be represented as plainer strings correctly" {
-        empty.plainString() shouldBe ""
-        oneCard.plainString() shouldBe "AC"
-        twoCards.plainString() shouldBe "AC 2D"
-        fiveCards.plainString() shouldBe "AC 2D 5H 7S 9C"
-    }
-
     "Pair is detected correctly" {
         withClue("Empty") { empty.isPair shouldBe false }
         withClue("AC,2D,5H,AS") { fourCards.isPair shouldBe false }

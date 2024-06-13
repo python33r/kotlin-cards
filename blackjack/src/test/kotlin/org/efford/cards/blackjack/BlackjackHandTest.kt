@@ -94,16 +94,4 @@ class BlackjackHandTest: StringSpec({
         withClue("2C,TS,QH is Bust?") { justBust.isBust shouldBe true }
         withClue("TH,TS,8D is Bust?") { clearlyBust.isBust shouldBe true }
     }
-
-    "Hands have the correct string representation" {
-        emptyHand.toString() shouldBe ""
-        aceQueen.toString() shouldBe "A\u2663 Q\u2665"
-        threeTenEight.toString() shouldBe "3\u2660 T\u2665 8\u2666"
-    }
-
-    "Hands can be represented as plainer strings correctly" {
-        emptyHand.plainString() shouldBe ""
-        aceQueen.plainString() shouldBe "AC QH"
-        threeTenEight.plainString() shouldBe "3S TH 8D"
-    }
 })

@@ -68,8 +68,10 @@ abstract class CardCollection<T: Card> {
      * @param[end] Optional suffix string
      * @return Collection as a string
      */
-    fun toString(sep: String, start: String = "", end: String = "")
-        = start + cards.joinToString(sep) + end
+    fun toString(sep: String, start: String = "", end: String = ""): String {
+        require(sep.isNotEmpty()) { "Separator cannot be empty" }
+        return start + cards.joinToString(sep) + end
+    }
 
     /**
      * Generates a plainer string representation of this collection.
@@ -84,8 +86,10 @@ abstract class CardCollection<T: Card> {
      * @param[end] Optional suffix string
      * @return Collection as a plainer string
      */
-    fun plainString(sep: String = " ", start: String = "", end: String = "")
-        = start + cards.joinToString(sep) { it.plainString() } + end
+    fun plainString(sep: String = " ", start: String = "", end: String = ""): String {
+        require(sep.isNotEmpty()) { "Separator cannot be empty" }
+        return start + cards.joinToString(sep) { it.plainString() } + end
+    }
 }
 
 /**

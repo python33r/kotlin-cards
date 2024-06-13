@@ -1,5 +1,6 @@
 package org.efford.cards
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.assertions.withClue
 import io.kotest.core.spec.IsolationMode
 import io.kotest.core.spec.style.StringSpec
@@ -99,5 +100,18 @@ class CardCollectionTest: StringSpec({
         col3.plainString(", ") shouldBe "9D, 2C, KS"
         col3.plainString(",", "[", "]") shouldBe "[9D,2C,KS]"
         col3.plainString(":", "<", ">") shouldBe "<9D:2C:KS>"
+    }
+
+    "Exception if empty string is provided as card separator" {
+        withClue("toString(\"\")") {
+            shouldThrow<IllegalArgumentException> {
+                col2.toString("")
+            }
+        }
+        withClue("plainString(\"\")") {
+            shouldThrow<IllegalArgumentException> {
+                col2.plainString("")
+            }
+        }
     }
 })

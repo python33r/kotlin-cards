@@ -74,6 +74,7 @@ abstract class CardCollection<T: Card> {
      * @param[start] Optional prefix string
      * @param[end] Optional suffix string
      * @return Collection as a string
+     * @throws[IllegalArgumentException] if separator string is empty
      */
     fun toString(sep: String, start: String = "", end: String = ""): String {
         require(sep.isNotEmpty()) { "Separator cannot be empty" }
@@ -92,6 +93,7 @@ abstract class CardCollection<T: Card> {
      * @param[start] Optional prefix string
      * @param[end] Optional suffix string
      * @return Collection as a plainer string
+     * @throws[IllegalArgumentException] if separator string is empty
      */
     fun plainString(sep: String = " ", start: String = "", end: String = ""): String {
         require(sep.isNotEmpty()) { "Separator cannot be empty" }
@@ -113,11 +115,11 @@ inline fun <reified T: Card> deckOf(): Sequence<T> = sequence {
 }
 
 /**
- * Comparator that can be used to sort cards by rank then suit
+ * Comparator that orders cards by rank then suit
  */
 val rankSuitOrdering = compareBy<Card> { it.rank }.thenBy { it.suit }
 
 /**
- * Comparator than can be used to sort cards by suit then rank
+ * Comparator than orders cards by suit then rank
  */
 val suitRankOrdering = compareBy<Card> { it.suit }.thenBy { it.rank }

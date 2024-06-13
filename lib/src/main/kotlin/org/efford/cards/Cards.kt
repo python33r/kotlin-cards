@@ -29,7 +29,7 @@ abstract class CardCollection<T: Card> {
      * @param[card] Card being tested
      * @return `true` if specified card is in the collection, `false` otherwise
      */
-    infix fun contains(card: T) = cards.contains(card)
+    operator fun contains(card: T) = cards.contains(card)
 
     /**
      * Adds the specified card to this collection.

@@ -43,13 +43,13 @@ class CardCollectionTest: StringSpec({
 
     "Card containment is checked correctly" {
         withClue("9D in []?") {
-            col contains nineDiamonds shouldBe false
+            (nineDiamonds in col) shouldBe false
         }
         withClue("9D in [9D]?") {
-            col1 contains nineDiamonds shouldBe true
+            (nineDiamonds in col1) shouldBe true
         }
         withClue("2C in [9D,2C]?") {
-            col2 contains twoClubs shouldBe true
+            (twoClubs in col2) shouldBe true
         }
     }
 

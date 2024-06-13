@@ -49,11 +49,11 @@ class ShoeTest: StringSpec({
     }
 
     "Shoe contains cards from all the suits" {
-        withClue("AC") { shoe contains aceClubs shouldBe true }
-        withClue("2C") { shoe contains twoClubs shouldBe true }
-        withClue("AD") { shoe contains aceDiamonds shouldBe true }
-        withClue("9H") { shoe contains nineHearts shouldBe true }
-        withClue("KS") { shoe contains kingSpades shouldBe true }
+        withClue("AC") { (aceClubs in shoe) shouldBe true }
+        withClue("2C") { (twoClubs in shoe) shouldBe true }
+        withClue("AD") { (aceDiamonds in shoe) shouldBe true }
+        withClue("9H") { (nineHearts in shoe) shouldBe true }
+        withClue("KS") { (kingSpades in shoe) shouldBe true }
     }
 
     "Cards can be dealt from shoe" {

@@ -33,10 +33,10 @@ class DeckTest: StringSpec({
     }
 
     "Deck contains cards from all the suits" {
-        withClue("AC") { deck contains aceClubs shouldBe true }
-        withClue("AD") { deck contains aceDiamonds shouldBe true }
-        withClue("9H") { deck contains nineHearts shouldBe true }
-        withClue("KS") { deck contains kingSpades shouldBe true }
+        withClue("AC") { (aceClubs in deck) shouldBe true }
+        withClue("AD") { (aceDiamonds in deck) shouldBe true }
+        withClue("9H") { (nineHearts in deck) shouldBe true }
+        withClue("KS") { (kingSpades in deck) shouldBe true }
     }
 
     "Cards can be dealt from deck" {

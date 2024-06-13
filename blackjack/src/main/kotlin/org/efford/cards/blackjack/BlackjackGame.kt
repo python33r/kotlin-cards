@@ -61,7 +61,7 @@ class BlackjackGame {
 
         println("Player's hand:")
         while (true) {
-            println("$player = ${player.value}")
+            printHand(player)
             if (player.isBust) {
                 println("Player is bust!")
                 break
@@ -74,11 +74,16 @@ class BlackjackGame {
         }
     }
 
+    private fun printHand(hand: BlackjackHand) {
+        print(hand.toString(",", start="<", end=">"))
+        println(" = ${hand.value}")
+    }
+
     private fun dealToDealer() {
         println("\nDealer's hand:")
         while (dealer.value < 17) {
             deck.deal()?.let { dealer.add(it) }
-            println("$dealer = ${dealer.value}")
+            printHand(dealer)
         }
     }
 

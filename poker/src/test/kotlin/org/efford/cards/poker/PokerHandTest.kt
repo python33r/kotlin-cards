@@ -83,9 +83,29 @@ class PokerHandTest: StringSpec({
                 contains(twoDiamonds) shouldBe true
             }
         }
-        with(PokerHand("AC,2D")) {
+    }
+
+    "Hands can be created from strings with different separator" {
+        with(PokerHand("AC,2D", sep=",")) {
             withClue("\"AC,2D\" size") { size shouldBe 2 }
             withClue("\"AC,2D\": cards present?") {
+                contains(aceClubs) shouldBe true
+                contains(twoDiamonds) shouldBe true
+            }
+        }
+    }
+
+    "Hands can be created from strings with prefix/suffix" {
+        with(PokerHand("[AC 2D]", start="[", end="]")) {
+            withClue("\"[AC 2D]\" size") { size shouldBe 2 }
+            withClue("\"[AC 2D]\": cards present?") {
+                contains(aceClubs) shouldBe true
+                contains(twoDiamonds) shouldBe true
+            }
+        }
+        with(PokerHand("<AC:2D>", sep=":", start="<", end=">")) {
+            withClue("\"<AC:2D>\" size") { size shouldBe 2 }
+            withClue("\"<AC:2D>\": cards present?") {
                 contains(aceClubs) shouldBe true
                 contains(twoDiamonds) shouldBe true
             }
@@ -96,6 +116,16 @@ class PokerHandTest: StringSpec({
         withClue("Bad card specification") {
             shouldThrow<IllegalArgumentException> {
                 PokerHand("1C")
+            }
+        }
+        withClue("Separator not specified") {
+            shouldThrow<IllegalArgumentException> {
+                PokerHand("AC,2D")
+            }
+        }
+        withClue("Prefix/suffix not specified") {
+            shouldThrow<IllegalArgumentException> {
+                PokerHand("[AC 2D]")
             }
         }
         withClue("Too many cards") {

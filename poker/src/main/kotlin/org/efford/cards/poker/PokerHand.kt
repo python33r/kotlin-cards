@@ -24,16 +24,23 @@ class PokerHand(): CardCollection<Card>() {
      *
      * Cards are specified using their two-character representations,
      * using either Unicode symbols or `'C'`, `'D'`, `'H'`, `'S'`
-     * to specify suit. These two-character representations must be
-     * separated from each other by either a single space or a comma.
+     * to specify suit. By default, it is assumed that these two-character
+     * representations are separated from each other by a single space,
+     * and that there are no characters with before the first card or
+     * after the last card.
      *
-     * Example: `"AC JH 7D"` or `"QS,TH,AD,7C"`
+     * Example of default format: `"AC JH 7D"`
+     *
+     * Examples of other supported formats: `"AC, JH, 7D"`, `"[AC:JH:7D]"`
      *
      * @param[str] String specifying the cards to be added
+     * @param[sep] String separating the cards (defaults to a space)
+     * @param[start] Prefix (defaults to empty string)
+     * @param[end] Suffix (defaults to empty string)
      */
-    constructor(str: String): this() {
+    constructor(str: String, sep: String = " ", start: String = "", end: String = ""): this() {
         if (str.isNotBlank()) {
-            val cardStrings = str.trim().split(" ", ",")
+            val cardStrings = str.trim().removePrefix(start).removeSuffix(end).split(sep)
             require(cardStrings.size <= 5) { "Too many cards" }
             cardStrings.forEach {
                 add(stringTo<Card>(it))

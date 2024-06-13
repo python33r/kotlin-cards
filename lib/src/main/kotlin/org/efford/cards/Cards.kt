@@ -51,6 +51,13 @@ abstract class CardCollection<T: Card> {
     fun sort() = cards.sort()
 
     /**
+     * Sorts this collection using the given comparator.
+     *
+     * @param[comparator] Card comparator
+     */
+    fun sortWith(comparator: Comparator<T>) = cards.sortWith(comparator)
+
+    /**
      * Generates the default string representation of this collection.
      *
      * @return Collection as a string
@@ -104,3 +111,13 @@ inline fun <reified T: Card> deckOf(): Sequence<T> = sequence {
         }
     }
 }
+
+/**
+ * Comparator that can be used to sort cards by rank then suit
+ */
+val rankSuitOrdering = compareBy<Card> { it.rank }.thenBy { it.suit }
+
+/**
+ * Comparator than can be used to sort cards by suit then rank
+ */
+val suitRankOrdering = compareBy<Card> { it.suit }.thenBy { it.rank }

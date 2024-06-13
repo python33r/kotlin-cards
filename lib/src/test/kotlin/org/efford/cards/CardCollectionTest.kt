@@ -14,6 +14,8 @@ class CardCollectionTest: StringSpec({
     val twoClubs = Card(Card.Rank.TWO, Card.Suit.CLUBS)
     val kingSpades = Card(Card.Rank.KING, Card.Suit.SPADES)
     val aceHearts = Card(Card.Rank.ACE, Card.Suit.HEARTS)
+    val fiveDiamonds = Card(Card.Rank.FIVE, Card.Suit.DIAMONDS)
+    val kingClubs = Card(Card.Rank.KING, Card.Suit.CLUBS)
 
     val col = object: CardCollection<Card>() {}
 
@@ -37,6 +39,15 @@ class CardCollectionTest: StringSpec({
         add(twoClubs)
         add(kingSpades)
         add(aceHearts)
+    }
+
+    val col6 = object: CardCollection<Card>() {}.apply {
+        add(nineDiamonds)
+        add(twoClubs)
+        add(kingSpades)
+        add(aceHearts)
+        add(fiveDiamonds)
+        add(kingClubs)
     }
 
     "A collection starts off empty" {
@@ -113,5 +124,20 @@ class CardCollectionTest: StringSpec({
                 col2.plainString("")
             }
         }
+    }
+
+    "Collections can be sorted" {
+        col6.sort()
+        col6.plainString() shouldBe "2C KC 5D 9D AH KS"
+    }
+
+    "Collections can be sorted with explicit rank-suit ordering" {
+        col6.sortWith(rankSuitOrdering)
+        col6.plainString() shouldBe "AH 2C 5D 9D KC KS"
+    }
+
+    "Collections can be sortted with explicit suit-rank ordering" {
+        col6.sortWith(suitRankOrdering)
+        col6.plainString() shouldBe "2C KC 5D 9D AH KS"
     }
 })

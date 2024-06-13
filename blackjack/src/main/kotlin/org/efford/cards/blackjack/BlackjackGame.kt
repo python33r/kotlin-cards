@@ -4,7 +4,7 @@ package org.efford.cards.blackjack
  * Simulator for a simplified version of Blackjack.
  */
 class BlackjackGame {
-    private val deck = Deck()
+    private val deck = Deck().apply { shuffle() }
     private val player = BlackjackHand()
     private val dealer = BlackjackHand()
 
@@ -12,10 +12,6 @@ class BlackjackGame {
     private var playerWins = 0
     private var dealerWins = 0
     private var ties = 0
-
-    init {
-        deck.shuffle()
-    }
 
     /**
      * Plays the game.

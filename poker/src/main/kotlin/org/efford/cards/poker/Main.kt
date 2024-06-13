@@ -1,9 +1,22 @@
 package org.efford.cards.poker
 
-fun getInt(prompt: String): Int {
+/**
+ * Entry point for Poker stats program.
+ */
+fun main() {
+    println()
+    val numTrials = getNumTrials()
+    val logPath = getLogPath()
+    with(PokerStats(numTrials, logPath)) {
+        runTrials()
+        showResults()
+    }
+}
+
+private fun getNumTrials(): Int {
     while (true) {
         try {
-            print(prompt)
+            print("Number of trials: ")
             return readln().toInt().also { require(it > 0) }
         }
         catch (err: Exception) {
@@ -12,24 +25,14 @@ fun getInt(prompt: String): Int {
     }
 }
 
-fun getString(prompt: String): String {
+private fun getLogPath(): String {
     while (true) {
         try {
-            print(prompt)
+            print("Logfile path: ")
             return readln().also { require(it.isNotBlank()) }
         }
         catch (err: Exception) {
             println("Error: try again...")
         }
-    }
-}
-
-fun main() {
-    println()
-    val numTrials = getInt("Number of trials: ")
-    val logPath = getString("Logfile path: ")
-    with(PokerStats(numTrials, logPath)) {
-        runTrials()
-        showResults()
     }
 }

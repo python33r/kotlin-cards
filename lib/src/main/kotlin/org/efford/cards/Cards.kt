@@ -102,6 +102,16 @@ abstract class CardCollection<T: Card> {
 }
 
 /**
+ * Comparator that orders cards by rank then suit
+ */
+val rankSuitOrdering = compareBy<Card> { it.rank }.thenBy { it.suit }
+
+/**
+ * Comparator than orders cards by suit then rank
+ */
+val suitRankOrdering = compareBy<Card> { it.suit }.thenBy { it.rank }
+
+/**
  * Generates a full deck of 52 cards, in sequence.
  *
  * @return Sequence of instances of Card (or a subtype)
@@ -111,6 +121,18 @@ inline fun <reified T: Card> deckOf(): Sequence<T> = sequence {
         for (rank in Card.Rank.entries) {
             yield(T::class.constructors.first().call(rank, suit))
         }
+    }
+}
+
+/**
+ * Generates a complete suit of cards, in sequence.
+ *
+ * @param[suit] Desired suit
+ * @return Sequence of instances of Card (or a subtype)
+ */
+inline fun <reified T: Card> suitOf(suit: Card.Suit): Sequence<T> = sequence {
+    for (rank in Card.Rank.entries) {
+        yield(T::class.constructors.first().call(rank, suit))
     }
 }
 
@@ -145,13 +167,3 @@ inline fun <reified T: Card> stringToSequence(
         yield(stringTo<T>(it))
     }
 }
-
-/**
- * Comparator that orders cards by rank then suit
- */
-val rankSuitOrdering = compareBy<Card> { it.rank }.thenBy { it.suit }
-
-/**
- * Comparator than orders cards by suit then rank
- */
-val suitRankOrdering = compareBy<Card> { it.suit }.thenBy { it.rank }

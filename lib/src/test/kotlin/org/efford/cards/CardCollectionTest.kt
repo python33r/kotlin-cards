@@ -113,16 +113,15 @@ class CardCollectionTest: StringSpec({
         col3.plainString(":", "<", ">") shouldBe "<9D:2C:KS>"
     }
 
-    "Exception if empty string is provided as card separator" {
-        withClue("toString(\"\")") {
-            shouldThrow<IllegalArgumentException> {
-                col2.toString("")
-            }
+    "Exception for empty card separator in toString()" {
+        shouldThrow<IllegalArgumentException> {
+            col2.toString("")
         }
-        withClue("plainString(\"\")") {
-            shouldThrow<IllegalArgumentException> {
-                col2.plainString("")
-            }
+    }
+
+    "Exception for empty card separator in plainString()" {
+        shouldThrow<IllegalArgumentException> {
+            col2.plainString("")
         }
     }
 
@@ -136,7 +135,7 @@ class CardCollectionTest: StringSpec({
         col6.plainString() shouldBe "AH 2C 5D 9D KC KS"
     }
 
-    "Collections can be sortted with explicit suit-rank ordering" {
+    "Collections can be sorted with explicit suit-rank ordering" {
         col6.sortWith(suitRankOrdering)
         col6.plainString() shouldBe "2C KC 5D 9D AH KS"
     }

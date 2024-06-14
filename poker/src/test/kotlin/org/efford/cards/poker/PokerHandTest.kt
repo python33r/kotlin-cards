@@ -74,11 +74,11 @@ class PokerHandTest: StringSpec({
         }
         with(PokerHand("AC")) {
             withClue("\"AC\" size") { size shouldBe 1 }
-            withClue("\"AC\": card present?") { contains(aceClubs) shouldBe true }
+            withClue("\"AC\": AC present?") { contains(aceClubs) shouldBe true }
         }
         with(PokerHand("AC 2D")) {
             withClue("\"AC 2D\" size") { size shouldBe 2 }
-            withClue("\"AC 2D\": cards present?") {
+            withClue("\"AC 2D\": AC & 2D present?") {
                 contains(aceClubs) shouldBe true
                 contains(twoDiamonds) shouldBe true
             }
@@ -88,7 +88,7 @@ class PokerHandTest: StringSpec({
     "Hands can be created from strings with different separator" {
         with(PokerHand("AC,2D", sep=",")) {
             withClue("\"AC,2D\" size") { size shouldBe 2 }
-            withClue("\"AC,2D\": cards present?") {
+            withClue("\"AC,2D\": AC & 2D present?") {
                 contains(aceClubs) shouldBe true
                 contains(twoDiamonds) shouldBe true
             }
@@ -98,14 +98,14 @@ class PokerHandTest: StringSpec({
     "Hands can be created from strings with prefix/suffix" {
         with(PokerHand("[AC 2D]", start="[", end="]")) {
             withClue("\"[AC 2D]\" size") { size shouldBe 2 }
-            withClue("\"[AC 2D]\": cards present?") {
+            withClue("\"[AC 2D]\": AC & 2D present?") {
                 contains(aceClubs) shouldBe true
                 contains(twoDiamonds) shouldBe true
             }
         }
         with(PokerHand("<AC:2D>", sep=":", start="<", end=">")) {
             withClue("\"<AC:2D>\" size") { size shouldBe 2 }
-            withClue("\"<AC:2D>\": cards present?") {
+            withClue("\"<AC:2D>\": AC & 2D present?") {
                 contains(aceClubs) shouldBe true
                 contains(twoDiamonds) shouldBe true
             }

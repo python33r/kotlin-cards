@@ -21,43 +21,49 @@ class FuncsTest: StringSpec({
     val spades = suitOf<Card>(Card.Suit.SPADES).toList()
 
     "deckOf() yields a full sorted 52-card sequence" {
-        deck.shouldHaveSize(52)
-        deck.shouldBeUnique()
-        deck.shouldBeSorted()
+        deck.let {
+            it.shouldHaveSize(52)
+            it.shouldBeUnique()
+            it.shouldBeSorted()
+        }
     }
 
     "suitOf() yields a full sorted sequence of Clubs" {
-        clubs.shouldHaveSize(13)
-        clubs.shouldBeUnique()
-        clubs.shouldBeSorted()
-        clubs.forAll {
+        clubs.let {
+            it.shouldHaveSize(13)
+            it.shouldBeUnique()
+            it.shouldBeSorted()
+        }.forAll {
             it.suit shouldBe Card.Suit.CLUBS
         }
     }
 
     "suitOf() yields a full sorted sequence of Diamonds" {
-        diamonds.shouldHaveSize(13)
-        diamonds.shouldBeUnique()
-        diamonds.shouldBeSorted()
-        diamonds.forAll {
+        diamonds.let {
+            it.shouldHaveSize(13)
+            it.shouldBeUnique()
+            it.shouldBeSorted()
+        }.forAll {
             it.suit shouldBe Card.Suit.DIAMONDS
         }
     }
 
     "suitOf() yields a full sorted sequence of Hearts" {
-        hearts.shouldHaveSize(13)
-        hearts.shouldBeUnique()
-        hearts.shouldBeSorted()
-        hearts.forAll {
+        hearts.let {
+            it.shouldHaveSize(13)
+            it.shouldBeUnique()
+            it.shouldBeSorted()
+        }.forAll {
             it.suit shouldBe Card.Suit.HEARTS
         }
     }
 
     "suitOf() yields a full sorted sequence of Spades" {
-        spades.shouldHaveSize(13)
-        spades.shouldBeUnique()
-        spades.shouldBeSorted()
-        spades.forAll {
+        spades.let {
+            it.shouldHaveSize(13)
+            it.shouldBeUnique()
+            it.shouldBeSorted()
+        }.forAll {
             it.suit shouldBe Card.Suit.SPADES
         }
     }

@@ -115,6 +115,38 @@ inline fun <reified T: Card> deckOf(): Sequence<T> = sequence {
 }
 
 /**
+ * Generates a sequence of cards from a string representation
+ * of that sequence.
+ *
+ * Cards are specified using their two-character representations, using
+ * either Unicode symbols or `'C'`, `'D'`, `'H'` and`'S'` to specify suit.
+ * By default, it is assumed that these two-character representations
+ * are separated from each other by a single space, and that there are no
+ * characters with before the first card or after the last card. Other
+ * strings can be specified as prefix, suffix or separator.
+ *
+ * Example of default format: `"AC JH 7D"`
+ *
+ * Examples of other supported formats: `"AC, JH, 7D"`, `"[AC:JH:7D]"`
+ *
+ * @param[str] String specifying the cards to be added
+ * @param[sep] String separating the cards (defaults to a space)
+ * @param[start] Prefix (defaults to empty string)
+ * @param[end] Suffix (defaults to empty string)
+ * @return Sequence of instances of Card (or a subtype)
+ */
+inline fun <reified T: Card> stringToSequence(
+    str: String,
+    sep: String = " ",
+    start: String = "",
+    end: String = ""
+): Sequence<T> = if (str.isBlank()) emptySequence() else sequence {
+    str.trim().removePrefix(start).removeSuffix(end).split(sep).forEach {
+        yield(stringTo<T>(it))
+    }
+}
+
+/**
  * Comparator that orders cards by rank then suit
  */
 val rankSuitOrdering = compareBy<Card> { it.rank }.thenBy { it.suit }

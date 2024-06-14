@@ -2,7 +2,7 @@ package org.efford.cards.poker
 
 import org.efford.cards.Card
 import org.efford.cards.CardCollection
-import org.efford.cards.stringTo
+import org.efford.cards.stringToSequence
 
 class PokerHand(): CardCollection<Card>() {
 
@@ -39,13 +39,7 @@ class PokerHand(): CardCollection<Card>() {
      * @param[end] Suffix (defaults to empty string)
      */
     constructor(str: String, sep: String = " ", start: String = "", end: String = ""): this() {
-        if (str.isNotBlank()) {
-            val cardStrings = str.trim().removePrefix(start).removeSuffix(end).split(sep)
-            require(cardStrings.size <= 5) { "Too many cards" }
-            cardStrings.forEach {
-                add(stringTo<Card>(it))
-            }
-        }
+        stringToSequence<Card>(str, sep, start, end).forEach { add(it) }
     }
 
     /**

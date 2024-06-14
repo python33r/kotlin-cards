@@ -209,7 +209,7 @@ class PokerHandTest: StringSpec({
         withClue("AC,AD,AH,AS,9C") { fourOfAKind.isFullHouse shouldBe false }
         withClue("AC,AH,AS,5H,5S") { fullHouse.isFullHouse shouldBe true }
         with(PokerHand(aceClubs, aceDiamonds, fiveClubs, fiveHearts, fiveSpades)) {
-            withClue("AC AD 5C 5H 5S") { isFullHouse shouldBe true }
+            withClue("AC,AD,5C,5H,5S") { isFullHouse shouldBe true }
         }
     }
 

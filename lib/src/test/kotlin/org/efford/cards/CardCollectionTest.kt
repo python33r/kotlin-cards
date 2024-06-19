@@ -6,16 +6,19 @@ import io.kotest.core.spec.IsolationMode
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
+import org.efford.cards.Card.Rank.*
+import org.efford.cards.Card.Suit.*
+
 @Suppress("unused")
 class CardCollectionTest: StringSpec({
     isolationMode = IsolationMode.InstancePerTest
 
-    val nineDiamonds = Card(Card.Rank.NINE, Card.Suit.DIAMONDS)
-    val twoClubs = Card(Card.Rank.TWO, Card.Suit.CLUBS)
-    val kingSpades = Card(Card.Rank.KING, Card.Suit.SPADES)
-    val aceHearts = Card(Card.Rank.ACE, Card.Suit.HEARTS)
-    val fiveDiamonds = Card(Card.Rank.FIVE, Card.Suit.DIAMONDS)
-    val kingClubs = Card(Card.Rank.KING, Card.Suit.CLUBS)
+    val nineDiamonds = Card(NINE, DIAMONDS)
+    val twoClubs = Card(TWO, CLUBS)
+    val kingSpades = Card(KING, SPADES)
+    val aceHearts = Card(ACE, HEARTS)
+    val fiveDiamonds = Card(FIVE, DIAMONDS)
+    val kingClubs = Card(KING, CLUBS)
 
     val col = object: CardCollection<Card>() {}
 

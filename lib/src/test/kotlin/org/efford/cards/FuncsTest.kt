@@ -4,21 +4,24 @@ import io.kotest.assertions.withClue
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.inspectors.forAll
-import io.kotest.matchers.collections.*
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.collections.*
+
+import org.efford.cards.Card.Rank.*
+import org.efford.cards.Card.Suit.*
 
 @Suppress("unused")
 class FuncsTest: StringSpec({
-    val aceClubs = Card(Card.Rank.ACE, Card.Suit.CLUBS)
-    val twoDiamonds = Card(Card.Rank.TWO, Card.Suit.DIAMONDS)
-    val tenHearts = Card(Card.Rank.TEN, Card.Suit.HEARTS)
-    val kingSpades = Card(Card.Rank.KING, Card.Suit.SPADES)
+    val aceClubs = Card(ACE, CLUBS)
+    val twoDiamonds = Card(TWO, DIAMONDS)
+    val tenHearts = Card(TEN, HEARTS)
+    val kingSpades = Card(KING, SPADES)
 
     val deck = deckOf<Card>().toList()
-    val clubs = suitOf<Card>(Card.Suit.CLUBS).toList()
-    val diamonds = suitOf<Card>(Card.Suit.DIAMONDS).toList()
-    val hearts = suitOf<Card>(Card.Suit.HEARTS).toList()
-    val spades = suitOf<Card>(Card.Suit.SPADES).toList()
+    val clubs = suitOf<Card>(CLUBS).toList()
+    val diamonds = suitOf<Card>(DIAMONDS).toList()
+    val hearts = suitOf<Card>(HEARTS).toList()
+    val spades = suitOf<Card>(SPADES).toList()
 
     "deckOf() yields a full sorted 52-card sequence" {
         deck.let {

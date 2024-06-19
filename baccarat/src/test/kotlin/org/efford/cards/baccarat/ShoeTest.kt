@@ -8,18 +8,19 @@ import io.kotest.matchers.collections.shouldNotBeSorted
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 
-import org.efford.cards.Card
+import org.efford.cards.Card.Rank.*
+import org.efford.cards.Card.Suit.*
 import org.efford.cards.CardCollection
 
 @Suppress("unused")
 class ShoeTest: StringSpec({
     isolationMode = IsolationMode.InstancePerTest
 
-    val aceClubs = BaccaratCard(Card.Rank.ACE, Card.Suit.CLUBS)
-    val twoClubs = BaccaratCard(Card.Rank.TWO, Card.Suit.CLUBS)
-    val aceDiamonds = BaccaratCard(Card.Rank.ACE, Card.Suit.DIAMONDS)
-    val nineHearts = BaccaratCard(Card.Rank.NINE, Card.Suit.HEARTS)
-    val kingSpades = BaccaratCard(Card.Rank.KING, Card.Suit.SPADES)
+    val aceClubs = BaccaratCard(ACE, CLUBS)
+    val twoClubs = BaccaratCard(TWO, CLUBS)
+    val aceDiamonds = BaccaratCard(ACE, DIAMONDS)
+    val nineHearts = BaccaratCard(NINE, HEARTS)
+    val kingSpades = BaccaratCard(KING, SPADES)
 
     val cardsInADeck = 52
 

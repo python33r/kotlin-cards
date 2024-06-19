@@ -8,31 +8,33 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 
 import org.efford.cards.Card
+import org.efford.cards.Card.Rank.*
+import org.efford.cards.Card.Suit.*
 import org.efford.cards.CardCollection
 
 @Suppress("unused")
 class PokerHandTest: StringSpec({
     isolationMode = IsolationMode.InstancePerTest
 
-    val aceClubs = Card(Card.Rank.ACE, Card.Suit.CLUBS)
-    val aceDiamonds = Card(Card.Rank.ACE, Card.Suit.DIAMONDS)
-    val aceHearts = Card(Card.Rank.ACE, Card.Suit.HEARTS)
-    val aceSpades = Card(Card.Rank.ACE, Card.Suit.SPADES)
-    val twoClubs = Card(Card.Rank.TWO, Card.Suit.CLUBS)
-    val twoDiamonds = Card(Card.Rank.TWO, Card.Suit.DIAMONDS)
-    val threeDiamonds = Card(Card.Rank.THREE, Card.Suit.DIAMONDS)
-    val fourSpades = Card(Card.Rank.FOUR, Card.Suit.SPADES)
-    val fiveClubs = Card(Card.Rank.FIVE, Card.Suit.CLUBS)
-    val fiveHearts = Card(Card.Rank.FIVE, Card.Suit.HEARTS)
-    val fiveSpades = Card(Card.Rank.FIVE, Card.Suit.SPADES)
-    val sixClubs = Card(Card.Rank.SIX, Card.Suit.CLUBS)
-    val sevenClubs = Card(Card.Rank.SEVEN, Card.Suit.CLUBS)
-    val sevenSpades = Card(Card.Rank.SEVEN, Card.Suit.SPADES)
-    val nineClubs = Card(Card.Rank.NINE, Card.Suit.CLUBS)
-    val tenDiamonds = Card(Card.Rank.TEN, Card.Suit.DIAMONDS)
-    val jackSpades = Card(Card.Rank.JACK, Card.Suit.SPADES)
-    val queenHearts = Card(Card.Rank.QUEEN, Card.Suit.HEARTS)
-    val kingSpades = Card(Card.Rank.KING, Card.Suit.SPADES)
+    val aceClubs = Card(ACE, CLUBS)
+    val aceDiamonds = Card(ACE, DIAMONDS)
+    val aceHearts = Card(ACE, HEARTS)
+    val aceSpades = Card(ACE, SPADES)
+    val twoClubs = Card(TWO, CLUBS)
+    val twoDiamonds = Card(TWO, DIAMONDS)
+    val threeDiamonds = Card(THREE, DIAMONDS)
+    val fourSpades = Card(FOUR, SPADES)
+    val fiveClubs = Card(FIVE, CLUBS)
+    val fiveHearts = Card(FIVE, HEARTS)
+    val fiveSpades = Card(FIVE, SPADES)
+    val sixClubs = Card(SIX, CLUBS)
+    val sevenClubs = Card(SEVEN, CLUBS)
+    val sevenSpades = Card(SEVEN, SPADES)
+    val nineClubs = Card(NINE, CLUBS)
+    val tenDiamonds = Card(TEN, DIAMONDS)
+    val jackSpades = Card(JACK, SPADES)
+    val queenHearts = Card(QUEEN, HEARTS)
+    val kingSpades = Card(KING, SPADES)
 
     val empty = PokerHand()
     val oneCard = PokerHand(aceClubs)
@@ -137,7 +139,7 @@ class PokerHandTest: StringSpec({
 
     "Adding a card to a full hand causes an exception" {
         shouldThrow<IllegalArgumentException> {
-            fiveCards.add(Card(Card.Rank.KING, Card.Suit.CLUBS))
+            fiveCards.add(Card(KING, CLUBS))
         }
     }
 

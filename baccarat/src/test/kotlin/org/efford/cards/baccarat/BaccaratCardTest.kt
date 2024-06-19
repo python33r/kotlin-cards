@@ -6,15 +6,17 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 
 import org.efford.cards.Card
+import org.efford.cards.Card.Rank.*
+import org.efford.cards.Card.Suit.*
 
 @Suppress("unused")
 class BaccaratCardTest: StringSpec({
-    val aceClubs = BaccaratCard(Card.Rank.ACE, Card.Suit.CLUBS)
-    val aceDiamonds = BaccaratCard(Card.Rank.ACE, Card.Suit.DIAMONDS)
-    val twoDiamonds = BaccaratCard(Card.Rank.TWO, Card.Suit.DIAMONDS)
-    val nineHearts = BaccaratCard(Card.Rank.NINE, Card.Suit.HEARTS)
-    val tenHearts = BaccaratCard(Card.Rank.TEN, Card.Suit.HEARTS)
-    val kingSpades = BaccaratCard(Card.Rank.KING, Card.Suit.SPADES)
+    val aceClubs = BaccaratCard(ACE, CLUBS)
+    val aceDiamonds = BaccaratCard(ACE, DIAMONDS)
+    val twoDiamonds = BaccaratCard(TWO, DIAMONDS)
+    val nineHearts = BaccaratCard(NINE, HEARTS)
+    val tenHearts = BaccaratCard(TEN, HEARTS)
+    val kingSpades = BaccaratCard(KING, SPADES)
 
     "BaccaratCard derives from Card" {
         aceClubs.shouldBeInstanceOf<Card>()

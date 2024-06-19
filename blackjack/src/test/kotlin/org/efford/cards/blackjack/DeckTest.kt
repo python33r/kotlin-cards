@@ -8,17 +8,19 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 
 import org.efford.cards.Card
+import org.efford.cards.Card.Rank.*
+import org.efford.cards.Card.Suit.*
 import org.efford.cards.CardCollection
 
 @Suppress("unused")
 class DeckTest: StringSpec({
     isolationMode = IsolationMode.InstancePerTest
 
-    val aceClubs = Card(Card.Rank.ACE, Card.Suit.CLUBS)
-    val twoClubs = Card(Card.Rank.TWO, Card.Suit.CLUBS)
-    val aceDiamonds = Card(Card.Rank.ACE, Card.Suit.DIAMONDS)
-    val nineHearts = Card(Card.Rank.NINE, Card.Suit.HEARTS)
-    val kingSpades = Card(Card.Rank.KING, Card.Suit.SPADES)
+    val aceClubs = Card(ACE, CLUBS)
+    val twoClubs = Card(TWO, CLUBS)
+    val aceDiamonds = Card(ACE, DIAMONDS)
+    val nineHearts = Card(NINE, HEARTS)
+    val kingSpades = Card(KING, SPADES)
 
     val fullDeckSize = 52
 

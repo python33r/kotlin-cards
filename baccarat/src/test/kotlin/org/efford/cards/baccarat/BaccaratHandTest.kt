@@ -6,7 +6,8 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 
-import org.efford.cards.Card
+import org.efford.cards.Card.Rank.*
+import org.efford.cards.Card.Suit.*
 import org.efford.cards.CardCollection
 
 @Suppress("unused")
@@ -17,9 +18,9 @@ class BaccaratHandTest: StringSpec({
     val handOneCard = BaccaratHand()
     val handTwoCards = BaccaratHand()
 
-    handOneCard.add(BaccaratCard(Card.Rank.NINE, Card.Suit.DIAMONDS))
-    handTwoCards.add(BaccaratCard(Card.Rank.NINE, Card.Suit.DIAMONDS))
-    handTwoCards.add(BaccaratCard(Card.Rank.TWO, Card.Suit.CLUBS))
+    handOneCard.add(BaccaratCard(NINE, DIAMONDS))
+    handTwoCards.add(BaccaratCard(NINE, DIAMONDS))
+    handTwoCards.add(BaccaratCard(TWO, CLUBS))
 
     "BaccaratHand derives from CardCollection<BaccaratCard>" {
         hand.shouldBeInstanceOf<CardCollection<BaccaratCard>>()
@@ -40,20 +41,20 @@ class BaccaratHandTest: StringSpec({
     "Natural hands are recognised correctly" {
         withClue("3H,5C a Natural?") {
             BaccaratHand().apply {
-                add(BaccaratCard(Card.Rank.THREE, Card.Suit.HEARTS))
-                add(BaccaratCard(Card.Rank.FIVE, Card.Suit.CLUBS))
+                add(BaccaratCard(THREE, HEARTS))
+                add(BaccaratCard(FIVE, CLUBS))
             }.isNatural shouldBe true
         }
         withClue("8S,JD a Natural?") {
             BaccaratHand().apply {
-                add(BaccaratCard(Card.Rank.EIGHT, Card.Suit.SPADES))
-                add(BaccaratCard(Card.Rank.JACK, Card.Suit.DIAMONDS))
+                add(BaccaratCard(EIGHT, SPADES))
+                add(BaccaratCard(JACK, DIAMONDS))
             }.isNatural shouldBe true
         }
         withClue("8S,AD a Natural?") {
             BaccaratHand().apply {
-                add(BaccaratCard(Card.Rank.EIGHT, Card.Suit.SPADES))
-                add(BaccaratCard(Card.Rank.ACE, Card.Suit.DIAMONDS))
+                add(BaccaratCard(EIGHT, SPADES))
+                add(BaccaratCard(ACE, DIAMONDS))
             }.isNatural shouldBe true
         }
     }

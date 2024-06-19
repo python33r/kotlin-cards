@@ -7,21 +7,23 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 
 import org.efford.cards.Card
+import org.efford.cards.Card.Rank.*
+import org.efford.cards.Card.Suit.*
 import org.efford.cards.CardCollection
 
 @Suppress("unused")
 class BlackjackHandTest: StringSpec({
     isolationMode = IsolationMode.InstancePerTest
 
-    val aceClubs = Card(Card.Rank.ACE, Card.Suit.CLUBS)
-    val aceDiamonds = Card(Card.Rank.ACE, Card.Suit.DIAMONDS)
-    val twoClubs = Card(Card.Rank.TWO, Card.Suit.CLUBS)
-    val threeSpades = Card(Card.Rank.THREE, Card.Suit.SPADES)
-    val eightDiamonds = Card(Card.Rank.EIGHT, Card.Suit.DIAMONDS)
-    val nineHearts = Card(Card.Rank.NINE, Card.Suit.HEARTS)
-    val tenHearts = Card(Card.Rank.TEN, Card.Suit.HEARTS)
-    val tenSpades = Card(Card.Rank.TEN, Card.Suit.SPADES)
-    val queenHearts = Card(Card.Rank.QUEEN, Card.Suit.HEARTS)
+    val aceClubs = Card(ACE, CLUBS)
+    val aceDiamonds = Card(ACE, DIAMONDS)
+    val twoClubs = Card(TWO, CLUBS)
+    val threeSpades = Card(THREE, SPADES)
+    val eightDiamonds = Card(EIGHT, DIAMONDS)
+    val nineHearts = Card(NINE, HEARTS)
+    val tenHearts = Card(TEN, HEARTS)
+    val tenSpades = Card(TEN, SPADES)
+    val queenHearts = Card(QUEEN, HEARTS)
 
     val emptyHand = BlackjackHand()
     val aceHand = BlackjackHand(aceClubs)

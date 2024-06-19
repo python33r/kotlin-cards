@@ -8,24 +8,27 @@ import io.kotest.matchers.comparables.shouldBeLessThan
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 
+import org.efford.cards.Card.Rank.*
+import org.efford.cards.Card.Suit.*
+
 @Suppress("unused")
 class CardTest: StringSpec({
-    val aceClubs = Card(Card.Rank.ACE, Card.Suit.CLUBS)
-    val twoClubs = Card(Card.Rank.TWO, Card.Suit.CLUBS)
-    val aceDiamonds = Card(Card.Rank.ACE, Card.Suit.DIAMONDS)
-    val twoDiamonds = Card(Card.Rank.TWO, Card.Suit.DIAMONDS)
-    val nineHearts = Card(Card.Rank.NINE, Card.Suit.HEARTS)
-    val tenHearts = Card(Card.Rank.TEN, Card.Suit.HEARTS)
-    val kingSpades = Card(Card.Rank.KING, Card.Suit.SPADES)
+    val aceClubs = Card(ACE, CLUBS)
+    val twoClubs = Card(TWO, CLUBS)
+    val aceDiamonds = Card(ACE, DIAMONDS)
+    val twoDiamonds = Card(TWO, DIAMONDS)
+    val nineHearts = Card(NINE, HEARTS)
+    val tenHearts = Card(TEN, HEARTS)
+    val kingSpades = Card(KING, SPADES)
 
     "Cards can be created with a rank and a suit" {
         withClue("AC") {
-            aceClubs.rank shouldBe Card.Rank.ACE
-            aceClubs.suit shouldBe Card.Suit.CLUBS
+            aceClubs.rank shouldBe ACE
+            aceClubs.suit shouldBe CLUBS
         }
         withClue("TH") {
-            tenHearts.rank shouldBe Card.Rank.TEN
-            tenHearts.suit shouldBe Card.Suit.HEARTS
+            tenHearts.rank shouldBe TEN
+            tenHearts.suit shouldBe HEARTS
         }
     }
 
@@ -64,8 +67,8 @@ class CardTest: StringSpec({
             (aceClubs == aceClubs) shouldBe true
         }
         withClue("With other card of same rank & suit") {
-            (aceClubs == Card(Card.Rank.ACE, Card.Suit.CLUBS)) shouldBe true
-            (aceClubs == Card(Card.Rank.ACE, Card.Suit.CLUBS)) shouldBe true
+            (aceClubs == Card(ACE, CLUBS)) shouldBe true
+            (aceClubs == Card(ACE, CLUBS)) shouldBe true
         }
         withClue("With other card of same suit & different rank") {
             (aceClubs == twoClubs) shouldBe false
@@ -80,7 +83,7 @@ class CardTest: StringSpec({
 
     "Cards can be compared" {
         aceClubs shouldBeEqualComparingTo aceClubs
-        aceClubs shouldBeEqualComparingTo Card(Card.Rank.ACE, Card.Suit.CLUBS)
+        aceClubs shouldBeEqualComparingTo Card(ACE, CLUBS)
         tenHearts shouldBeEqualComparingTo tenHearts
 
         aceClubs shouldBeLessThan twoClubs
@@ -92,7 +95,7 @@ class CardTest: StringSpec({
 
     "Cards have sensible hash codes" {
         withClue("Hashes for same rank & suit") {
-            aceClubs.hashCode() shouldBe Card(Card.Rank.ACE, Card.Suit.CLUBS).hashCode()
+            aceClubs.hashCode() shouldBe Card(ACE, CLUBS).hashCode()
         }
         withClue("Hashes for different ranks") {
             aceClubs.hashCode() shouldNotBe twoClubs.hashCode()

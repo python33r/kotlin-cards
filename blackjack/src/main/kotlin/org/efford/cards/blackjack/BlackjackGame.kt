@@ -71,7 +71,7 @@ class BlackjackGame {
     }
 
     private fun printHand(hand: BlackjackHand) {
-        print(hand.toString(",", start="<", end=">"))
+        print(hand.toString(",", start="(", end=")"))
         println(" = ${hand.value}")
     }
 
